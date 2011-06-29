@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|images|robots\.txt)
+RewriteRule ^(.*)$ /freego/app/index.php/$1 [L]
+

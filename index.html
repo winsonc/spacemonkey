@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" /> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+<link href="css/reset.css" rel="stylesheet" type="text/css" /> 
+<link href="css/style.css" rel="stylesheet" type="text/css" /> 
+<title>spcmnky.com</title> 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+<script type="text/javascript" src="js/json2.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/jquery-ui.min.js"></script> 
+<script type="text/javascript" src="js/jquery.timer.js"></script> 
+<script type="text/javascript" src="js/jquery.cookie.js"></script> 
+<script type="text/javascript" src="js/script.js"></script> 
+<script type="text/javascript" src="js/user.js"></script> 
+<script type="text/javascript" src="js/map.js"></script> 
+</head> 
+<body> 
+  <div id="map_canvas"></div> 
+  <div id="tools">
+    <div id="error"></div>
+    <div id="user">
+	  <input type="button" value="Login" id="login" />
+	    <form action="app/auth/login" method="post" id="login_block">
+		  <input type="text" name="username" value="username" /><br />
+		  <input type="password" name="password" value="password" /><br />
+		  <input type="submit" value="Login" />
+		</form>
+	  <input type="button" value="Register" id="register" />
+	    <form action="app/auth/register" method="post" id="register_block">
+		  <input type="text" name="username" value="username" /><br />
+		  <input type="password" name="password" value="password" /><br />
+		  <input type="submit" value="Register" />
+		</form>
+	</div>
+    <div id="tool">
+      <input type="button" value="Search" id="search" />
+      <input type="button" value="Delete" id="delete" />
+      <input type="button" value="Save" id="save" />
+      <input type="button" value="Help" id="help" />
+	</div>
+	<ul id="list">
+	</ul>
+  </div>
+</body> 
+</html> 

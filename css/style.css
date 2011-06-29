@@ -1,0 +1,62 @@
+/*  Main  */
+html {
+	height: 100%;
+	}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	}
+
+#map_canvas {
+	height: 100%;
+	}
+
+#tools {
+	background: #ffffff;
+	padding: 10px;
+	margin: 20px 0px 0px 20px;
+	max-height: 600px;
+	overflow: show;
+	overflow-y: auto;
+			
+	/* radius */
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	/* shadow */
+	-webkit-box-shadow: 0px 0px 10px 0px #000000;
+	-moz-box-shadow: 0px 0px 10px 0px #000000;
+	box-shadow: 0px 0px 10px 0px #000000;
+	}
+	
+	#error {
+		color: #FF0000;
+		}
+	
+	#list li {
+		margin: 5px 0px;
+		color: #000000;
+		}
+		
+		#list li.loading {
+			color: #AAAAAA;
+		}
+		
+		#list li.bouncingMarker {
+			color: #000000;
+			background: #B3ECFF;
+			}
+		
+		#list li:hover {
+			cursor: pointer;
+			}
+		
+		#list li > .meta {
+			color: #AAAAAA;
+			font-size: 9px;
+		}
