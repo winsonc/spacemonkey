@@ -245,6 +245,16 @@ function _codeLatLng(position, index) {
 	});
 }
 
+function _codeAddress(address) {
+	geocoder.geocode( {'address': address} , function (results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			placeMarker(results[0].geometry.location, address, results[0].formatted_address);
+		} else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+			error('Result not found.');
+		}
+	});
+}
+
 function _indexOf(node) {
 	return $(node).parent().children().index($(node));
 }
