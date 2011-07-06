@@ -8,11 +8,11 @@ class Place extends CI_Controller {
 	}
 	
 	function save() {
-		$userid = $this->input->cookie('userid');
+		$projectid = $this->input->cookie('projectid');
 		$data = json_decode($this->input->post('data'));
 		
 		/* delete the old data first */
-		$this->db->delete('place', array('project' => $userid));
+		$this->db->delete('place', array('project' => $projectid));
 		
 		$sorting = 0;
 		foreach ($data as $item) {
@@ -20,7 +20,7 @@ class Place extends CI_Controller {
 			$position = substr($item->position, 1, -1);
 			$position = explode(', ', $position);
 			
-			$save = array('project' => $userid,
+			$save = array('project' => $projectid,
 						  'title' => $item->title,
 						  'address' => $item->address,
 						  'lat' => $position[0],
@@ -40,6 +40,12 @@ class Place extends CI_Controller {
 		}
 		
 		echo json_encode($message);
+	}
+	
+	function read() {
+		$this->db->order_by('sorting', 'asc');
+		$data['markers'] = $this->db->get_where('place', array('project' => $this->input->post('id')))->result();
+		echo json_encode($data);
 	}
 }
 

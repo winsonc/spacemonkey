@@ -14,37 +14,47 @@
 <script type="text/javascript" src="js/jquery.cookie.js"></script> 
 <script type="text/javascript" src="js/script.js"></script> 
 <script type="text/javascript" src="js/user.js"></script> 
+<script type="text/javascript" src="js/project.js"></script> 
 <script type="text/javascript" src="js/map.js"></script> 
 </head> 
 <body> 
   <div id="map_canvas"></div> 
   <div id="tools">
-    <div id="error"></div>
-    <div id="user">
-	  <input type="button" value="Login" id="login" />
-	    <form action="app/auth/login" method="post" id="login_block">
-		  <input type="text" name="username" value="username" /><br />
-		  <input type="password" name="password" value="password" /><br />
-		  <input type="submit" value="Login" />
-		</form>
-	  <input type="button" value="Register" id="register" />
-	    <form action="app/auth/register" method="post" id="register_block">
-		  <input type="text" name="username" value="username" /><br />
-		  <input type="password" name="password" value="password" /><br />
-		  <input type="submit" value="Register" />
-		</form>
+	<div id="header"></div>
+	<div id="body">
+		<div id="user">
+		  <input type="button" value="Login" id="login" />
+			<form action="app/auth/login" method="post" id="login_block">
+			  <input type="text" name="username" value="winson" /><br />
+			  <input type="password" name="password" value="winson" /><br />
+			  <input type="submit" value="Login" />
+			</form>
+		  <input type="button" value="Register" id="register" />
+			<form action="app/auth/register" method="post" id="register_block">
+			  <input type="text" name="username" value="username" /><br />
+			  <input type="password" name="password" value="password" /><br />
+			  <input type="submit" value="Register" />
+			</form>
+		</div>
+		<div id="project">
+			<form action="app/project/create" method="post" id="create_project">
+				<input type="text" name="project" value="New Project" />
+			</form>
+			<ul id="project_list">
+			</ul>
+		</div>
+		<div id="tool">
+		  <input type="button" value="Search" id="search" />
+		  <input type="button" value="Delete" id="delete" />
+		  <input type="button" value="Save" id="save" />
+		  <div id="search_block">
+			<input type="text" name="search" />
+		  </div>
+		</div>
+		<ul id="list">
+		</ul>
 	</div>
-    <div id="tool">
-      <input type="button" value="Search" id="search" />
-      <input type="button" value="Delete" id="delete" />
-      <input type="button" value="Save" id="save" />
-      <input type="button" value="Help" id="help" />
-	  <div id="search_block">
-		<input type="text" name="search" />
-	  </div>
-	</div>
-	<ul id="list">
-	</ul>
+    <div id="footer"></div>
   </div>
 </body> 
 </html> 

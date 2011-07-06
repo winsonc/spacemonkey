@@ -18,7 +18,8 @@ class Auth extends CI_Controller {
 			$user['userid'] = $result->id;
 			$data['message'] = $user;
 			/* prepare markers if user logged in */
-			$data['markers'] = $this->db->get_where('place', array('project' => $result->id))->result_array();
+			$query = "SELECT * FROM `project` WHERE id IN (SELECT pid FROM `userproject` WHERE `uid`='{$result->id}')";
+			$data['project'] = $this->db->query($query)->result();
 		} else {
 			$data['status'] = 'FAILED';
 			$data['message'] = 'Username or password is wrong.';

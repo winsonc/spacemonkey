@@ -5,6 +5,7 @@ $(document).ready( function () {
 	$('#login_block').hide();
 	$('#register_block').hide();
 	$('#search_block').hide();
+	$('#project').hide();
 	$('#tool').hide();
 	$('#list').hide();
 
@@ -16,19 +17,6 @@ $(document).ready( function () {
 	$('#register').bind('click', function (event) {
 		$(this).unbind();
 		showRegister();
-	});
-				  
-	$('#search').bind('click', function (event) {
-		$('#search_block').slideToggle('slow', function () {
-			$('#search_block > input:first-child').focus();
-		});
-	});
-				  
-	$('#search_block > input:first-child').bind('keypress', function(event) {
-		if (event.keyCode == 13) {
-			$(this).select();
-			_codeAddress($(this).val());
-		}
 	});
 });
 

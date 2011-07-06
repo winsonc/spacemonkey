@@ -27,6 +27,20 @@ function bindMapFunctions() {
 	/* bind Save Markers */
 	$("#save").bind( 'click', function () {
 		saveMarkers();
+					});
+	
+	/* bind Search function */
+	$('#search').bind('click', function (event) {
+		$('#search_block').slideToggle('slow', function () {
+			$('#search_block > input:first-child').focus();
+		});
+	});
+	
+	$('#search_block > input:first-child').bind('keypress', function(event) {
+		if (event.keyCode == 13) {
+			$(this).select();
+			_codeAddress($(this).val());
+		}
 	});
 }
 
@@ -49,6 +63,7 @@ function setToolsOnMap() {
 }
 
 function placeMarker(location, theTitle, theAddress) {
+	var load = (theAddress == null) ? false : true;
 	/* fake polymorphyism */
 	theTitle = (theTitle == null) ? 'Location' : theTitle;
 	theAddress = (theAddress == null) ? location.toString() : theAddress;
@@ -83,7 +98,11 @@ function placeMarker(location, theTitle, theAddress) {
 	_addMarkerOnList(marker);
 	
 	/* address lookup */
-	_codeLatLng(marker.position, marker.index);
+	if (!load) {
+		_codeLatLng(marker.position, marker.index);
+	} else {
+		$("#list > li:nth-child("+(marker.index+1)+")").removeClass("loading");
+	}
 }
 
 function deleteMarker() {
@@ -161,7 +180,7 @@ function _addMarkerOnList(marker) {
 	var metaNode = document.createElement('div');
 	$(metaNode).addClass('meta');
 	
-	var textOfMetaNode = document.createTextNode(marker.position.toString());
+	var textOfMetaNode = document.createTextNode(marker.address);
 	metaNode.appendChild(textOfMetaNode);
 	
 	newNode.appendChild(metaNode);

@@ -67,13 +67,7 @@ function _successLogin(obj) {
 	
 	/* remove and show something */
 	$("#user").remove();
-	$("#tool").show();
-	$("#list").show();
+	initialProject(obj.project);
 	
-	if (obj.markers) {
-		loadMarkers(obj.markers);
-	}
 	
-	/* start to bind map tools */
-	bindMapFunctions();
 }
