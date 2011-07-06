@@ -20,41 +20,60 @@
 <body> 
   <div id="map_canvas"></div> 
   <div id="tools">
-	<div id="header"></div>
+	<div id="header">SpaceMonkey</div>
 	<div id="body">
 		<div id="user">
-		  <input type="button" value="Login" id="login" />
+		  <button type="button" id="login">Login</button>
 			<form action="app/auth/login" method="post" id="login_block">
 			  <input type="text" name="username" value="winson" /><br />
 			  <input type="password" name="password" value="winson" /><br />
-			  <input type="submit" value="Login" />
+			  <button type="submit">Login</button>
 			</form>
-		  <input type="button" value="Register" id="register" />
+		  <button type="button" id="register" />Register</button>
 			<form action="app/auth/register" method="post" id="register_block">
 			  <input type="text" name="username" value="username" /><br />
 			  <input type="password" name="password" value="password" /><br />
-			  <input type="submit" value="Register" />
+			  <button type="submit" value="Register">Register</button>
 			</form>
 		</div>
 		<div id="project">
 			<form action="app/project/create" method="post" id="create_project">
-				<input type="text" name="project" value="New Project" />
+				<input type="text" name="project" placeholder="New Project" />
 			</form>
 			<ul id="project_list">
 			</ul>
 		</div>
-		<div id="tool">
-		  <input type="button" value="Search" id="search" />
-		  <input type="button" value="Delete" id="delete" />
-		  <input type="button" value="Save" id="save" />
-		  <div id="search_block">
-			<input type="text" name="search" />
-		  </div>
+		<div id="markers">
+			<ul>
+				<li><a href="#markers_tab">Markers</a></li>
+				<li><a href="#settings_tab">Settings</a></li>
+			</ul>
+			<div id="markers_tab">
+				<ul id="list">
+				</ul>
+				<div id="tool">
+				  <button type="button" value="" id="search">Search</button>
+				  <button type="button" value="" id="delete">Delete</button>
+				  <button type="button" value="" id="save">Save</button>
+				  <div id="search_block">
+					<input type="text" name="search" />
+				  </div>
+				</div>
+			</div>
+			<div id="settings_tab">
+				<form action="app/project/rename" method="post" id="rename_project">
+					<fieldset><legend>Rename Project</legend>
+						<input type="text" name="project" value="" /><br />
+						<button type="submit">Rename</button>
+					</fieldset>
+				</form>
+				<fieldset><legend>Rename Project</legend>
+					<button type="button" id="reset_map_center">Reset Default Map Position</button>
+				</fieldset>
+			</div>
 		</div>
-		<ul id="list">
-		</ul>
 	</div>
-    <div id="footer"></div>
+    <div id="footer">&nbsp;<div id="error">Welcome</div></div>
   </div>
 </body> 
 </html> 

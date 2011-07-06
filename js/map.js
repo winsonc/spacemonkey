@@ -11,6 +11,10 @@ function initialize() {
 	
 	/* Place the list on the Map */
 	setToolsOnMap();
+	
+	/* Sortable list */
+	$('#list').sortable();
+	
 }
 
 function bindMapFunctions() {
@@ -27,7 +31,7 @@ function bindMapFunctions() {
 	/* bind Save Markers */
 	$("#save").bind( 'click', function () {
 		saveMarkers();
-					});
+	});
 	
 	/* bind Search function */
 	$('#search').bind('click', function (event) {

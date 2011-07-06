@@ -6,8 +6,7 @@ $(document).ready( function () {
 	$('#register_block').hide();
 	$('#search_block').hide();
 	$('#project').hide();
-	$('#tool').hide();
-	$('#list').hide();
+	$('#markers').hide();
 
 	$('#login').bind('click', function (event) {
 		$(this).unbind();
@@ -24,8 +23,13 @@ function error(message) {
 	$('#error').html(message);
 	$('#error').show();
 	$.timer(2000, function () {
-		$("#error").fadeOut('slow', function () {
+		//$('#error').hide("slide", { direction: "left" }, 1000);
+		$('#error').fadeOut('slow', function () {
 			$(this).html('');
 		});
 	});
+}
+
+function header(message) {
+	$('#header').html(message);
 }

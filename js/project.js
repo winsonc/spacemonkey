@@ -1,8 +1,9 @@
 function initialProject(project) {
+	header('Projects');
+	
 	$('#project').show();
-	$('#create_project > input:first-child').select();
 	$.each(project, function (index, value) {
-		   _listAProject(value);
+		_listAProject(value);
 	});
 	
 	$('#create_project').bind('submit', function (event) {
@@ -45,6 +46,9 @@ function _listAProject(project) {
 }
 
 function _projectSelect(project) {
+	
+	header(project.project);
+	
 	$('#project_list > li').unbind();
 	
 	/* zoom to the default location */
@@ -54,8 +58,10 @@ function _projectSelect(project) {
 	
 	/* show and hide something */
 	$('#project').hide();
-	$('#tool').show();
-	$('#list').show();
+	$('#markers').show();
+	$('#markers').tabs();
+	
+	$('#markers').find("input[name='project']").val(project.project);
 	
 	/* read markers from database */
 	$.post('app/place/read', project, function (results) {

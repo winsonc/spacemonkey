@@ -1,5 +1,7 @@
 function showLogin() {
 	
+	header('Login');
+	
 	/* bind the login function and ajax it */
 	$('#login_block').bind('submit', function (event) {
 						   doLogin(event);
@@ -34,6 +36,8 @@ function doLogin(event) {
 
 function showRegister() {
 	
+	header('Register');
+	
 	$('#register_block').bind('submit', function (event) {
 						   doRegister(event);
 						   });
@@ -60,7 +64,8 @@ function doRegister(event) {
 
 function _successLogin(obj) {
 	/* change the html title with username */
-	document.title = obj.message.username + ' - ' + document.title;
+	//document.title = obj.message.username + ' - ' + document.title;
+	error('Welcome, ' + obj.message.username);
 	
 	/* set the cookie */
 	$.cookie('userid', obj.message.userid);
