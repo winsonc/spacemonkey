@@ -21,12 +21,8 @@ $(document).ready( function () {
 
 function error(message) {
 	$('#error').html(message);
-	$('#error').show();
-	$.timer(2000, function () {
-		//$('#error').hide("slide", { direction: "left" }, 1000);
-		$('#error').fadeOut('slow', function () {
-			$(this).html('');
-		});
+	$('#error').show().delay(2000).fadeOut('slow', function () {
+		$(this).html('');
 	});
 }
 

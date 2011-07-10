@@ -7,10 +7,8 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" /> 
 <title>spcmnky.com</title> 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
-<script type="text/javascript" src="js/json2.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script> 
 <script type="text/javascript" src="js/jquery-ui.min.js"></script> 
-<script type="text/javascript" src="js/jquery.timer.js"></script> 
 <script type="text/javascript" src="js/jquery.cookie.js"></script> 
 <script type="text/javascript" src="js/script.js"></script> 
 <script type="text/javascript" src="js/user.js"></script> 
@@ -40,21 +38,23 @@
 			<form action="app/project/create" method="post" id="create_project">
 				<input type="text" name="project" placeholder="New Project" />
 			</form>
-			<ul id="project_list">
+			<ul id="project_list" class="listStyle">
 			</ul>
 		</div>
 		<div id="markers">
 			<ul>
 				<li><a href="#markers_tab">Markers</a></li>
 				<li><a href="#settings_tab">Settings</a></li>
+				<li><a href="#participant_tab">Participant</a></li>
 			</ul>
 			<div id="markers_tab">
 				<ul id="list">
 				</ul>
 				<div id="tool">
-				  <button type="button" value="" id="search">Search</button>
-				  <button type="button" value="" id="delete">Delete</button>
-				  <button type="button" value="" id="save">Save</button>
+				  <button type="button" id="home">Home</button>
+				  <button type="button" id="search">Search</button>
+				  <button type="button" id="delete">Delete</button>
+				  <button type="button" id="save">Save</button>
 				  <div id="search_block">
 					<input type="text" name="search" />
 				  </div>
@@ -70,6 +70,13 @@
 				<fieldset><legend>Rename Project</legend>
 					<button type="button" id="reset_map_center">Reset Default Map Position</button>
 				</fieldset>
+			</div>
+			<div id="participant_tab">
+				<form action="app/project/join" method="post" id="join_project">
+					<input type="text" name="participant" placeholder="Add participant" />
+				</form>
+				<ul id="participant_list" class="listStyle">
+				</ul>
 			</div>
 		</div>
 	</div>

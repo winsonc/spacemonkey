@@ -1,5 +1,6 @@
 var map;
 var markers = [];
+var global_project;
 var geocoder;
 
 function initialize() {
@@ -45,6 +46,28 @@ function bindMapFunctions() {
 			$(this).select();
 			_codeAddress($(this).val());
 		}
+	});
+	
+	/* bind setting -> reset map position */
+	$('#reset_map_center').bind('click', function () {
+		_resetCenter();
+	});
+	
+	/* bind Home */
+	$('#home').bind('click', function () {
+		_home();
+	});
+	
+	/* bind rename project function */
+	$('#rename_project').bind('submit', function (event) {
+		event.preventDefault();
+		rename_project(this);
+	});
+	
+	/* add participant */
+	$('#join_project').bind('submit', function (event) {
+		event.preventDefault();
+		joinProject(this);
 	});
 }
 
@@ -251,6 +274,29 @@ function _dragMarker(marker, latLng) {
 	marker.setAnimation(null);
 	$("#list > li:nth-child("+(marker.index+1)+")").addClass("loading");
 	_codeLatLng(marker.position, marker.index);
+}
+
+function _home() {
+	var latLng = new google.maps.LatLng(global_project.lat, global_project.lng);
+	map.panTo(latLng);
+	map.setZoom(parseFloat(global_project.zoom));
+}
+
+function _resetCenter() {
+	var latlng = map.getCenter();
+	var data = {
+		lat : latlng.lat(),
+		lng : latlng.lng(),
+		zoom : map.getZoom()
+	};
+	$.post('app/project/resetCenter', data, function (results) {
+		var results = jQuery.parseJSON(results);
+		if (results.status == 'SUCCESS') {
+			error('Saved');
+		} else {
+			error(results.message);
+		}
+	});
 }
 
 function _codeLatLng(position, index) {
